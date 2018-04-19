@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+
+    <!-- Info -->
+    <message name="plugboardInfoRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="plugboardInfoResponse">
+        <part name="plugboardInfoResult" type="xsd:string" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="plugboardInfo">
+            <documentation>Get some info from Magento that Plugboard needs</documentation>
+            <input message="typens:plugboardInfoRequest" />
+            <output message="typens:plugboardInfoResponse" />
+        </operation>
+    </portType>
+
+    <!-- config -->
+    <message name="plugboardConfigRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="paths" type="typens:ArrayOfString" />
+        <part name="store" type="xsd:int" />
+    </message>
+    <message name="plugboardConfigResponse">
+        <part name="plugboardConfigResult" type="xsd:string" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="plugboardConfig">
+            <documentation>Get store configuration from Magento</documentation>
+            <input message="typens:plugboardConfigRequest" />
+            <output message="typens:plugboardConfigResponse" />
+        </operation>
+    </portType>
+
+    <!-- productoptions -->
+    <message name="plugboardProductoptionsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="store" type="xsd:int" />
+    </message>
+    <message name="plugboardProductoptionsResponse">
+        <part name="plugboardProductoptionsResult" type="xsd:string" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="plugboardProductoptions">
+            <documentation>Get all product options</documentation>
+            <input message="typens:plugboardProductoptionsRequest" />
+            <output message="typens:plugboardProductoptionsResponse" />
+        </operation>
+    </portType>
+
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="plugboardInfo">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="plugboardConfig">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="plugboardProductoptions">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
+
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <complexType name="catalogProductEntity">
+                <all>
+                    <element name="created_at" type="xsd:string" minOccurs="0"/>
+                    <element name="updated_at" type="xsd:string" minOccurs="0"/>
+                    <element name="type_id" type="xsd:string" minOccurs="0"/>
+                    <element name="description" type="xsd:string" minOccurs="0"/>
+                    <element name="short_description" type="xsd:string" minOccurs="0"/>
+                    <element name="weight" type="xsd:string" minOccurs="0"/>
+                    <element name="status" type="xsd:string" minOccurs="0"/>
+                    <element name="url_key" type="xsd:string" minOccurs="0"/>
+                    <element name="url_path" type="xsd:string" minOccurs="0"/>
+                    <element name="visibility" type="xsd:string" minOccurs="0"/>
+                    <element name="has_options" type="xsd:string" minOccurs="0"/>
+                    <element name="gift_message_available" type="xsd:string" minOccurs="0"/>
+                    <element name="price" type="xsd:string" minOccurs="0"/>
+                    <element name="special_price" type="xsd:string" minOccurs="0"/>
+                    <element name="special_from_date" type="xsd:string" minOccurs="0"/>
+                    <element name="special_to_date" type="xsd:string" minOccurs="0"/>
+                    <element name="tax_class_id" type="xsd:string" minOccurs="0"/>
+                    <element name="tier_price" type="typens:catalogProductTierPriceEntityArray" minOccurs="0"/>
+                    <element name="meta_title" type="xsd:string" minOccurs="0"/>
+                    <element name="meta_keyword" type="xsd:string" minOccurs="0"/>
+                    <element name="meta_description" type="xsd:string" minOccurs="0"/>
+                    <element name="custom_design" type="xsd:string" minOccurs="0"/>
+                    <element name="custom_layout_update" type="xsd:string" minOccurs="0"/>
+                    <element name="options_container" type="xsd:string" minOccurs="0"/>
+                    <element name="additional_attributes" type="typens:associativeArray" minOccurs="0"/>
+                    <element name="configurable_attributes" type="typens:ArrayOfString" minOccurs="0"/>
+                    <element name="configurable_children" type="typens:ArrayOfInt" minOccurs="0"/>
+                    <element name="gallery" type="typens:catalogProductImageEntityArray" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="catalogProductReturnEntity">
+                <all>
+                    <element name="configurable_attributes" type="typens:ArrayOfString" minOccurs="0"/>
+                    <element name="configurable_children" type="typens:ArrayOfInt" minOccurs="0"/>
+                    <element name="gallery" type="typens:catalogProductImageEntityArray" minOccurs="0"/>
+                </all>
+            </complexType>
+            <complexType name="shoppingCartProductEntity">
+                <all>
+                    <element name="custom_price" type="xsd:double" minOccurs="0"/>
+                </all>
+            </complexType>
+        </schema>
+    </types>
+
+    <message name="catalogProductListRequest">
+        <part name="attributes" type="typens:catalogProductRequestAttributes"/>
+        <part name="extendedInfo" type="xsd:boolean"/>
+    </message>
+
+    <message name="catalogProductInfoRequest">
+        <part name="extendedInfo" type="xsd:boolean"/>
+    </message>
+
+    <message name="shoppingCartShippingMethodRequest">
+        <part name="price" type="xsd:double"/>
+    </message>
+</definitions>

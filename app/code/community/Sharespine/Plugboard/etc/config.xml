@@ -1,0 +1,77 @@
+<config>
+    <modules>
+        <Sharespine_Plugboard>
+            <active>true</active>
+            <version>2.1.10</version>
+        </Sharespine_Plugboard>
+    </modules>
+    <global>
+        <helpers>
+            <plugboard>
+                <class>Sharespine_Plugboard_Helper</class>
+            </plugboard>
+        </helpers>
+        <models>
+            <plugboard>
+                <class>Sharespine_Plugboard_Model</class>
+            </plugboard>
+            <catalog>
+                <rewrite>
+                    <product_api_v2>Sharespine_Plugboard_Model_Product_Api_V2</product_api_v2>
+                </rewrite>
+            </catalog>
+            <checkout>
+                <rewrite>
+                    <cart_product_api_v2>Sharespine_Plugboard_Model_Cart_Product_Api_V2</cart_product_api_v2>
+                    <cart_shipping_api_v2>Sharespine_Plugboard_Model_Cart_Shipping_Api_V2</cart_shipping_api_v2>
+                </rewrite>
+            </checkout>
+        </models>
+    </global>
+    <default>
+        <carriers>
+            <sharespine>
+                <active>1</active>
+                <title>Sharespine</title>
+                <name>Plugboard</name>
+                <sallowspecific>0</sallowspecific>
+                <model>plugboard/shipping_plugboard</model>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </sharespine>
+        </carriers>
+        <payment>
+            <plugboard_generic>
+                <active>1</active>
+                <model>plugboard/payment_generic</model>
+                <order_status>pending</order_status>
+                <title>Plugboard (Generic)</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </plugboard_generic>
+            <plugboard_fyndiq>
+                <active>1</active>
+                <model>plugboard/payment_fyndiq</model>
+                <order_status>pending</order_status>
+                <title>Fyndiq (Plugboard)</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </plugboard_fyndiq>
+            <plugboard_cdon>
+                <active>1</active>
+                <model>plugboard/payment_cdon</model>
+                <order_status>pending</order_status>
+                <title>CDON (Plugboard)</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </plugboard_cdon>
+            <plugboard_tradera>
+                <active>1</active>
+                <model>plugboard/payment_tradera</model>
+                <order_status>pending</order_status>
+                <title>TRADERA (Plugboard)</title>
+                <allowspecific>0</allowspecific>
+                <group>offline</group>
+            </plugboard_tradera>
+        </payment>
+    </default>
+</config>

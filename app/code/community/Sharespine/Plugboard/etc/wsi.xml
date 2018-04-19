@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:typens="urn:{{var wsdl.name}}"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             name="{{var wsdl.name}}"
+             targetNamespace="urn:{{var wsdl.name}}">
+
+    <!-- info -->
+    <wsdl:message name="plugboardInfoRequest">
+        <wsdl:part name="parameters" element="typens:plugboardInfoRequestParam" />
+    </wsdl:message>
+    <wsdl:message name="plugboardInfoResponse">
+        <wsdl:part name="parameters" element="typens:plugboardInfoResponseParam" />
+    </wsdl:message>
+    <wsdl:portType name="{{var wsdl.handler}}PortType">
+        <wsdl:operation name="plugboardInfo">
+            <wsdl:documentation>Get some info from Magento that Plugboard needs</wsdl:documentation>
+            <wsdl:input message="typens:plugboardInfoRequest" />
+            <wsdl:output message="typens:plugboardInfoResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- config -->
+    <wsdl:message name="plugboardConfigRequest">
+        <wsdl:part name="parameters" element="typens:plugboardConfigRequestParam" />
+    </wsdl:message>
+    <wsdl:message name="plugboardConfigResponse">
+        <wsdl:part name="parameters" element="typens:plugboardConfigResponseParam" />
+    </wsdl:message>
+    <wsdl:portType name="{{var wsdl.handler}}PortType">
+        <wsdl:operation name="plugboardConfig">
+            <wsdl:documentation>Get some info from Magento that Plugboard needs</wsdl:documentation>
+            <wsdl:input message="typens:plugboardConfigRequest" />
+            <wsdl:output message="typens:plugboardConfigResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Productoptions -->
+    <wsdl:message name="plugboardProductoptionsRequest">
+        <wsdl:part name="parameters" element="typens:plugboardProductoptionsRequestParam" />
+    </wsdl:message>
+    <wsdl:message name="plugboardProductoptionsResponse">
+        <wsdl:part name="parameters" element="typens:plugboardProductoptionsResponseParam" />
+    </wsdl:message>
+    <wsdl:portType name="{{var wsdl.handler}}PortType">
+        <wsdl:operation name="plugboardProductoptions">
+            <wsdl:documentation>Get some info from Magento that Plugboard needs</wsdl:documentation>
+            <wsdl:input message="typens:plugboardProductoptionsRequest" />
+            <wsdl:output message="typens:plugboardProductoptionsResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <wsdl:operation name="plugboardInfo">
+            <soap:operation soapAction="" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="plugboardConfig">
+            <soap:operation soapAction="" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="plugboardProductoptions">
+            <soap:operation soapAction="" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:{{var wsdl.name}}">
+
+            <xsd:complexType name="catalogProductEntity">
+                <xsd:sequence>
+                    <xsd:element name="created_at" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="updated_at" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="type_id" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="description" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="short_description" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="weight" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="url_key" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="url_path" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="visibility" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="has_options" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="gift_message_available" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="price" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="special_price" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="special_from_date" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="special_to_date" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="tax_class_id" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="tier_price" type="typens:catalogProductTierPriceEntityArray" minOccurs="0" />
+                    <xsd:element name="meta_title" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="meta_keyword" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="meta_description" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="custom_design" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="custom_layout_update" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="options_container" type="xsd:string" minOccurs="0" />
+                    <xsd:element name="additional_attributes" type="typens:associativeArray" minOccurs="0" />
+                    <xsd:element name="configurable_attributes" type="typens:ArrayOfString" minOccurs="0"/>
+                    <xsd:element name="configurable_children" type="typens:ArrayOfInt" minOccurs="0"/>
+                    <xsd:element name="gallery" type="typens:catalogProductImageEntityArray" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="catalogProductReturnEntity">
+                <xsd:sequence>
+                    <xsd:element name="configurable_attributes" type="typens:ArrayOfString" minOccurs="0"/>
+                    <xsd:element name="configurable_children" type="typens:ArrayOfInt" minOccurs="0"/>
+                    <xsd:element name="gallery" type="typens:catalogProductImageEntityArray" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="shoppingCartProductEntity">
+                <xsd:sequence>
+                    <xsd:element name="custom_price" type="xsd:double" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:element name="catalogProductListRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="1" name="attributes" type="typens:catalogProductRequestAttributes"/>
+                        <xsd:element minOccurs="0" maxOccurs="1" name="extendedInfo" type="xsd:boolean"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="catalogProductInfoRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="1" name="extendedInfo" type="xsd:boolean"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardInfoRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="sessionId" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardInfoResponseParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardConfigRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="sessionId" type="xsd:string" />
+                        <xsd:element minOccurs="1" maxOccurs="1" name="paths" type="typens:ArrayOfString" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="store" type="xsd:int" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardConfigResponseParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardProductoptionsRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="sessionId" type="xsd:string" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="store" type="xsd:int" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardProductoptionsResponseParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="shoppingCartShippingMethodRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="1" name="price" type="xsd:double" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+
+</wsdl:definitions>

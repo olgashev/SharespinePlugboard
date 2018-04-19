@@ -1,0 +1,5 @@
+app/code/community/Sharespine/Plugboard
+app/etc/modules/Sharespine_Plugboard.xml
+
+# Only used when creating new builds
+# /var/connect/Sharespine_Plugboard.xml

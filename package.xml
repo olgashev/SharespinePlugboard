@@ -1,0 +1,29 @@
+<package>
+  <name>Sharespine_Plugboard</name>
+  <version>2.1.10</version>
+  <stability>stable</stability>
+  <license>GPL</license>
+  <channel>community</channel>
+  <extends/>
+  <summary>Add supporting functions for Plugboard</summary>
+  <description>Add API-methods, Payment methods &amp; Shipping methods that Sharespine Plugboard need.</description>
+  <notes>Added attribute_label to productoptions</notes>
+  <authors>
+    <author>
+      <name>Andre Klang</name>
+      <user>AndreKlang</user>
+      <email>hej@andreklang.se</email>
+    </author>
+  </authors>
+  <date>2017-10-09</date>
+  <time>12:00:02</time>
+  <contents><target name="magecommunity"><dir name="Sharespine"><dir name="Plugboard"><dir name="Helper"><file hash="7569cfcec16e658281226d2e8263a0f0" name="Backports.php"/><file hash="7e80413498927d2f57b448237d895542" name="Data.php"/></dir><dir name="Model"><dir name="Cart"><dir name="Product"><dir name="Api"><file hash="661449e02e26a4283f61fecbd3f452da" name="V2.php"/></dir></dir><dir name="Shipping"><dir name="Api"><file hash="7056258a9d11a4747fc4e5acee5cac46" name="V2.php"/></dir></dir></dir><dir name="Info"><dir name="Api"><file hash="c8a4693b86a7cc03a9b3dc137a8c8e17" name="V2.php"/></dir><file hash="0e3126d0127a82a0906d2e5a3fd2346d" name="Api.php"/></dir><dir name="Product"><dir name="Api"><file hash="15d37e3c7c6a334b247abe80cf64537b" name="V2.php"/></dir></dir><dir name="Shipping"><file hash="a7c004b5bafb55071f8e3c71e0b60833" name="Plugboard.php"/></dir><dir name="Payment"><file hash="5d82ad4f0557547f3d09898d478e8de9" name="Cdon.php"/><file hash="13b7733da3e1c8867aaeb1eb561e90ad" name="Generic.php"/><file hash="6b1dcc6250a90748ce6e836d1c7617e1" name="Abstract.php"/><file hash="91448546a918808f849dc6985b6c767b" name="Tradera.php"/><file hash="6aa64fa6bb2a13dbfacb44a893ad7481" name="Fyndiq.php"/></dir></dir><dir name="etc"><file hash="51f7ea07b25b4de575e59b25c388b267" name="api.xml"/><file hash="387990b5d3932a8ef83d68ce95b82a63" name="wsdl.xml"/><file hash="0827434fb0134d3815a1b3f2bee19f07" name="system.xml"/><file hash="217e637bde66c69c110d83d51d63e088" name="wsi.xml"/><file hash="13a126d02273762f17dbb962b995575e" name="config.xml"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file hash="12865f0c27b045e1d933dfd8e8d5bc8c" name="Sharespine_Plugboard.xml"/></dir></target></contents><compatible/>
+  <dependencies>
+    <required>
+      <php>
+        <min>5.1.0</min>
+        <max>6.0.0</max>
+      </php>
+    </required>
+  </dependencies>
+</package>

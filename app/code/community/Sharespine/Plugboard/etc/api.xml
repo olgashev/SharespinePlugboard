@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <api>
+        <resources>
+            <sharespine_plugboard translate="title" module="plugboard">
+                <model>plugboard/info_api</model>
+                <title>Plugboard Get Info</title>
+                <acl>core/plugboard</acl>
+                <methods>
+                    <info translate="title" module="plugboard">
+                        <title>Get some info from Magento that Plugboard needs</title>
+                        <method>info</method>
+                    </info>
+                    <config translate="title" module="plugboard">
+                        <title>Get info from getStoreConfig</title>
+                        <method>config</method>
+                    </config>
+                    <productoptions translate="title" module="plugboard">
+                        <title>Get all product options</title>
+                        <method>productoptions</method>
+                    </productoptions>
+                </methods>
+                <faults module="catalog">
+                    <store_not_exists>
+                        <code>100</code>
+                        <message>Requested store view not found.</message>
+                    </store_not_exists>
+                    <data_invalid>
+                        <code>102</code>
+                        <message>Invalid data given. Details in error message.</message>
+                    </data_invalid>
+                </faults>
+            </sharespine_plugboard>
+        </resources>
+        <resources_alias>
+            <plugboard>sharespine_plugboard</plugboard>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <plugboard>plugboard</plugboard>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <core>
+                    <plugboard translate="title" module="plugboard">
+                        <title>Sharespine Plugboard</title>
+                    </plugboard>
+                </core>
+            </resources>
+        </acl>
+    </api>
+</config>
