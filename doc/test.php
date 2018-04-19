@@ -20,11 +20,10 @@ $password = "plugboard";
 $domain = $argv[1];
 $type = $argv[2];
 
-
 switch ($type){
     case "info_v1":
         $proxy = getSoap($domain);
-        $sessionId = $proxy->login($username, $password);
+        $proxy = $proxy->login($username, $password);
         $result = $proxy->call($sessionId, 'plugboard.info');
         break;
 
@@ -204,6 +203,66 @@ switch ($type){
 
         break;
 
+    case "shippingmethods_v2":
+
+        $proxy = getSoap($domain, true);
+
+        $sessionId = $proxy->login($username, $password);
+        $result = $proxy->plugboardShippingmethods($sessionId, 1);
+
+        break;
+
+    case "shippingmethods_wsi":
+
+        // NOTE: You have to activate WSI-mode in magento config
+        $proxy = getSoap($domain, true);
+
+        $session = $proxy->login(
+            array(
+                "username" => $username,
+                "apiKey"   => $password
+            )
+        );
+
+        $result = $proxy->plugboardShippingmethods(
+            array(
+                "sessionId" => $session->result,
+                "store"     => 1
+            )
+        );
+
+        break;
+
+    case "paymentmethods_v2":
+
+        $proxy = getSoap($domain, true);
+
+        $sessionId = $proxy->login($username, $password);
+        $result = $proxy->plugboardPaymentmethods($sessionId, 1);
+
+        break;
+
+    case "paymentmethods_wsi":
+
+        // NOTE: You have to activate WSI-mode in magento config
+        $proxy = getSoap($domain, true);
+
+        $session = $proxy->login(
+            array(
+                "username" => $username,
+                "apiKey"   => $password
+            )
+        );
+
+        $result = $proxy->plugboardPaymentmethods(
+            array(
+                "sessionId" => $session->result,
+                "store"     => 1
+            )
+        );
+
+        break;
+
     case "control":
         // if this method does not work, you have an issue with Magento, not the module
         $proxy = getSoap($domain, true);
@@ -232,7 +291,7 @@ echo "\n";
  */
 function getSoap($domain, $v2 = false){
 
-    $options = array(WSDL_CACHE_NONE);
+    $options = array('cache_wsdl' => WSDL_CACHE_NONE);
     //$options = array();
 
     if($v2) $proxy = new SoapClient('http://'.$domain.'/index.php/api/v2_soap?wsdl=1',$options);

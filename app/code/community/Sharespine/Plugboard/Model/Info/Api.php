@@ -79,6 +79,58 @@ class Sharespine_Plugboard_Model_Info_Api extends Mage_Api_Model_Resource_Abstra
     }
 
     /**
+     * Get list of all configured shipping methods
+     *
+     * @param null $store
+     *
+     * @return string
+     */
+    public function shippingmethods($store = null)
+    {
+        $storeId = $this->_getStoreId($store);
+        $shippingMethods = array();
+
+        $activeCarriers = Mage::getSingleton('shipping/config')->getActiveCarriers($storeId);
+        foreach ($activeCarriers as $carrierCode => $carrierModel) {
+            if ($carrierMethods = $carrierModel->getAllowedMethods()) {
+                foreach ($carrierMethods as $methodCode => $method) {
+                    $code = $carrierCode . '_' . $methodCode;
+                }
+                $carrierTitle = Mage::getStoreConfig('carriers/' . $carrierCode . '/title');
+            }
+            if($code && $carrierTitle) {
+                $shippingMethods[] = array('code' => $code, 'name' => $carrierTitle);
+            }
+        }
+
+        return json_encode(array_values($shippingMethods),JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
+     * Get list of all configured payment methods
+     *
+     * @param null $store
+     *
+     * @return string
+     */
+    public function paymentmethods($store = null)
+    {
+        $storeId = $this->_getStoreId($store);
+        $paymentMethods = array();
+
+        $activePaymentMethods = Mage::getSingleton('payment/config')->getActiveMethods($storeId);
+        foreach ($activePaymentMethods as $paymentCode => $paymentModel) {
+            $paymentTitle = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
+            $paymentMethods[] = array(
+                'label' => $paymentTitle,
+                'value' => $paymentCode,
+            );
+        }
+
+        return json_encode(array_values($paymentMethods), JSON_PRETTY_PRINT + JSON_UNESCAPED_SLASHES);
+    }
+
+    /**
      * Get array with all tax-classes
      * @return array
      */

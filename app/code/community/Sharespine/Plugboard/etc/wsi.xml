@@ -52,6 +52,36 @@
         </wsdl:operation>
     </wsdl:portType>
 
+    <!-- Shippingmethods -->
+    <wsdl:message name="plugboardShippingmethodsRequest">
+        <wsdl:part name="parameters" element="typens:plugboardShippingmethodsRequestParam" />
+    </wsdl:message>
+    <wsdl:message name="plugboardShippingmethodsResponse">
+        <wsdl:part name="parameters" element="typens:plugboardShippingmethodsResponseParam" />
+    </wsdl:message>
+    <wsdl:portType name="{{var wsdl.handler}}PortType">
+        <wsdl:operation name="plugboardShippingmethods">
+            <wsdl:documentation>Get all configured shipping methods</wsdl:documentation>
+            <wsdl:input message="typens:plugboardShippingmethodsRequest" />
+            <wsdl:output message="typens:plugboardShippingmethodsResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <!-- Paymentmethods -->
+    <wsdl:message name="plugboardPaymentmethodsRequest">
+        <wsdl:part name="parameters" element="typens:plugboardPaymentmethodsRequestParam" />
+    </wsdl:message>
+    <wsdl:message name="plugboardPaymentmethodsResponse">
+        <wsdl:part name="parameters" element="typens:plugboardPaymentmethodsResponseParam" />
+    </wsdl:message>
+    <wsdl:portType name="{{var wsdl.handler}}PortType">
+        <wsdl:operation name="plugboardPaymentmethods">
+            <wsdl:documentation>Get all configured payment methods</wsdl:documentation>
+            <wsdl:input message="typens:plugboardPaymentmethodsRequest" />
+            <wsdl:output message="typens:plugboardPaymentmethodsResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+
     <wsdl:binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
         <wsdl:operation name="plugboardInfo">
             <soap:operation soapAction="" />
@@ -72,6 +102,24 @@
             </wsdl:output>
         </wsdl:operation>
         <wsdl:operation name="plugboardProductoptions">
+            <soap:operation soapAction="" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="plugboardShippingmethods">
+            <soap:operation soapAction="" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="plugboardPaymentmethods">
             <soap:operation soapAction="" />
             <wsdl:input>
                 <soap:body use="literal" />
@@ -193,6 +241,40 @@
             </xsd:element>
 
             <xsd:element name="plugboardProductoptionsResponseParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardShippingmethodsRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="sessionId" type="xsd:string" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="store" type="xsd:int" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardShippingmethodsResponseParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:string" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardPaymentmethodsRequestParam">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element minOccurs="1" maxOccurs="1" name="sessionId" type="xsd:string" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="store" type="xsd:int" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+
+            <xsd:element name="plugboardPaymentmethodsResponseParam">
                 <xsd:complexType>
                     <xsd:sequence>
                         <xsd:element minOccurs="1" maxOccurs="1" name="result" type="xsd:string" />

@@ -51,6 +51,38 @@
         </operation>
     </portType>
 
+    <!-- shippingmethods -->
+    <message name="plugboardShippingmethodsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="store" type="xsd:int" />
+    </message>
+    <message name="plugboardShippingmethodsResponse">
+        <part name="plugboardShippingmethodsResult" type="xsd:string" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="plugboardShippingmethods">
+            <documentation>Get all configured shipping methods</documentation>
+            <input message="typens:plugboardShippingmethodsRequest" />
+            <output message="typens:plugboardShippingmethodsResponse" />
+        </operation>
+    </portType>
+
+    <!-- paymentmethods -->
+    <message name="plugboardPaymentmethodsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="store" type="xsd:int" />
+    </message>
+    <message name="plugboardPaymentmethodsResponse">
+        <part name="plugboardPaymentmethodsResult" type="xsd:string" />
+    </message>
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="plugboardPaymentmethods">
+            <documentation>Get all configured payment methods</documentation>
+            <input message="typens:plugboardPaymentmethodsRequest" />
+            <output message="typens:plugboardPaymentmethodsResponse" />
+        </operation>
+    </portType>
+
     <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
         <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
         <operation name="plugboardInfo">
@@ -72,6 +104,24 @@
             </output>
         </operation>
         <operation name="plugboardProductoptions">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="plugboardShippingmethods">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="plugboardPaymentmethods">
             <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
             <input>
                 <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />

@@ -19,6 +19,14 @@
                         <title>Get all product options</title>
                         <method>productoptions</method>
                     </productoptions>
+                    <shippingmethods translate="title" module="plugboard">
+                        <title>Get all configured shipping methods</title>
+                        <method>shippingmethods</method>
+                    </shippingmethods>
+                    <paymentmethods>
+                         <title>Get all configured payment methods</title>
+                         <method>paymentmethods</method>
+                     </paymentmethods>
                 </methods>
                 <faults module="catalog">
                     <store_not_exists>
@@ -45,6 +53,12 @@
                 <core>
                     <plugboard translate="title" module="plugboard">
                         <title>Sharespine Plugboard</title>
+                        <shippingmethods translate="title" module="plugboard">
+                            <title>Get all configured shipping methods</title>
+                        </shippingmethods>
+                        <paymentmethods translate="title" module="plugboard">
+                            <title>Get all configured payment methods</title>
+                        </paymentmethods>
                     </plugboard>
                 </core>
             </resources>
