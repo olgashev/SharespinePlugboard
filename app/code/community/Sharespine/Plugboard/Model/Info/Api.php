@@ -98,8 +98,11 @@ class Sharespine_Plugboard_Model_Info_Api extends Mage_Api_Model_Resource_Abstra
                 }
                 $carrierTitle = Mage::getStoreConfig('carriers/' . $carrierCode . '/title');
             }
-            if($code && $carrierTitle) {
-                $shippingMethods[] = array('code' => $code, 'name' => $carrierTitle);
+            if(isset($code) && isset($carrierTitle)) {
+                $shippingMethods[] = array(
+                    'code' => $code,
+                    'name' => $carrierTitle
+                );
             }
         }
 
@@ -122,8 +125,8 @@ class Sharespine_Plugboard_Model_Info_Api extends Mage_Api_Model_Resource_Abstra
         foreach ($activePaymentMethods as $paymentCode => $paymentModel) {
             $paymentTitle = Mage::getStoreConfig('payment/' . $paymentCode . '/title');
             $paymentMethods[] = array(
-                'label' => $paymentTitle,
-                'value' => $paymentCode,
+                'code' => $paymentCode,
+                'name' => $paymentTitle
             );
         }
 

@@ -14,8 +14,8 @@
  * - Add access to "Core / Sharespine Plugboard" in the users role
  */
 
-$username = "plugboard";
-$password = "plugboard";
+$username = "Dahlquist";
+$password = "kD489dXkDpuGv6en";
 
 $domain = $argv[1];
 $type = $argv[2];
